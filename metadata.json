@@ -1,0 +1,8 @@
+{
+  "name": "Merit Ledger",
+  "description": "Authoritative university directory, verified aggregate calculators, scholarship database, and admission roadmaps for Pakistani students.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
