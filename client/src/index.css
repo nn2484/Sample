@@ -1,0 +1,246 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Newsreader", Georgia, Cambria, serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  /* Navy & Antique Gold brand palette */
+  --color-navy-950: #102a43;
+  --color-navy-900: #102a43;
+  --color-navy-800: #173b5f;
+  --color-navy-700: #2f6f8f;
+  --color-navy-600: #2f6f8f;
+  --color-navy-500: #4f88a8;
+  --color-navy-400: #77a8c0;
+  --color-navy-300: #a8c7d7;
+  --color-navy-200: #c9dce6;
+  --color-navy-100: #e2eef3;
+  --color-navy-50: #eff6f8;
+  --color-gold-950: #5b4517;
+  --color-gold-900: #6f531d;
+  --color-gold-800: #84652a;
+  --color-gold-700: #9a772f;
+  --color-gold-600: #b68a2c;
+  --color-gold-500: #caa34a;
+  --color-gold-400: #d8b866;
+  --color-gold-300: #b68a2c;
+  --color-gold-200: #e3cf9b;
+  --color-gold-100: #f1e7cc;
+  --color-gold-50: #faf5e7;
+  --color-paper-950: #17202a;
+  --color-paper-900: #17202a;
+  --color-paper-800: #263746;
+  --color-paper-700: #3f4e5c;
+  --color-paper-600: #566575;
+  --color-paper-500: #6b7280;
+  --color-paper-400: #8d96a0;
+  --color-paper-300: #c7cbd0;
+  --color-paper-200: #dddeda;
+  --color-paper-100: #ebe8e3;
+  --color-paper-50: #f7f3ee;
+}
+
+:root {
+  color-scheme: light;
+}
+
+.dark {
+  color-scheme: dark;
+  /* Paper neutrals become a navy canvas, layered surfaces, and cool high-contrast text. */
+  --color-paper-950: #07111f;
+  --color-paper-900: #f4f7fb;
+  --color-paper-800: #dde7ef;
+  --color-paper-700: #c5d4e1;
+  --color-paper-600: #c5d4e1;
+  --color-paper-500: #91aabd;
+  --color-paper-400: #91aabd;
+  --color-paper-300: #315a7c;
+  --color-paper-200: #294b68;
+  --color-paper-100: #0d2239;
+  --color-paper-50: #112b46;
+
+  /* Navy structural and interaction family. Text utilities are brightened below where needed. */
+  --color-navy-950: #07111f;
+  --color-navy-900: #f4f7fb;
+  --color-navy-800: #c5d4e1;
+  --color-navy-700: #357ba8;
+  --color-navy-600: #2f6f9f;
+  --color-navy-500: #5b9bc7;
+  --color-navy-400: #79b8de;
+  --color-navy-300: #315a7c;
+  --color-navy-200: #294b68;
+  --color-navy-100: #1c4263;
+  --color-navy-50: #163854;
+
+  /* Restrained antique brass: luminous text and figures, deep ink on gold actions. */
+  --color-gold-950: #f4e7b5;
+  --color-gold-900: #ead593;
+  --color-gold-800: #dec275;
+  --color-gold-700: #d8be79;
+  --color-gold-600: #d2b35b;
+  --color-gold-500: #e4cd87;
+  --color-gold-400: #ecdca8;
+  --color-gold-300: #d2b35b;
+  --color-gold-200: #e4cd87;
+  --color-gold-100: #4a3c21;
+  --color-gold-50: #322b1b;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #f7f3ee;
+  color: #17202a;
+  min-height: 100vh;
+}
+
+.dark body {
+  background-color: #07111f;
+  color: #f4f7fb;
+}
+
+/* Keep the app canvas deeper than the card and control surfaces. */
+.dark #root > div {
+  background-color: #07111f;
+}
+
+/* A structural header level distinct from the standard card surface. */
+.dark header.sticky {
+  background-color: rgb(11 31 53 / 96%);
+  border-color: #294b68;
+}
+
+/* Lift text-only navy utilities for accessible contrast on dark surfaces. */
+.dark .text-navy-600,
+.dark .text-navy-700,
+.dark [class~="hover:text-navy-600"]:hover,
+.dark [class~="hover:text-navy-700"]:hover {
+  color: #79b8de;
+}
+
+/* Preserve white labels on the medium-blue selected/primary controls. */
+.dark [class~="bg-navy-600"] .text-navy-600,
+.dark [class~="bg-navy-600"] .text-navy-700,
+.dark [class~="bg-navy-700"] .text-navy-600,
+.dark [class~="bg-navy-700"] .text-navy-700 {
+  color: #f4f7fb;
+}
+
+/* Gold calls to action use navy ink for small icons, not low-contrast pale blue. */
+.dark [class~="bg-gold-300"] .text-navy-900,
+.dark [class~="bg-gold-200"] .text-navy-900 {
+  color: #07111f;
+}
+
+.dark .hero-banner {
+  background-color: #0b1f35;
+}
+
+.dark .hero-overlay {
+  background-image: linear-gradient(
+    105deg,
+    rgb(7 17 31 / 97%) 0%,
+    rgb(11 31 53 / 91%) 58%,
+    rgb(16 42 67 / 79%) 100%
+  );
+}
+
+.dark .hero-banner .text-paper-200 {
+  color: #c5d4e1;
+}
+
+/* Keep the result panel on its own elevated navy gradient, not the light token gradient. */
+.dark .calculator-result-panel {
+  background-image: linear-gradient(135deg, #102a43 0%, #0b1f35 54%, #112b46 100%);
+  border-color: #294b68;
+}
+
+/* The archive's footer uses a fixed light-mode green; replace it only in dark mode. */
+.dark footer {
+  background-color: #0b1f35 !important;
+  border-color: #294b68 !important;
+}
+
+/* Inset controls sit below card surfaces; native options remain legible. */
+.dark input:not([type="checkbox"]):not([type="radio"]),
+.dark textarea,
+.dark select {
+  color: #f4f7fb;
+  background-color: #0d2239;
+  border-color: #315a7c;
+}
+
+.dark option {
+  color: #f4f7fb;
+  background-color: #112b46;
+}
+
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: #91aabd;
+  opacity: 1;
+}
+
+/* A consistent visible keyboard focus treatment in dark mode. */
+.dark :where(button, a, input, select, textarea, [tabindex]):focus-visible {
+  outline: 2px solid #79b8de;
+  outline-offset: 2px;
+  border-color: #5b9bc7;
+}
+
+.dark .shadow-xs,
+.dark .shadow-sm,
+.dark .shadow-md,
+.dark .shadow-lg,
+.dark .shadow-xl {
+  --tw-shadow-color: rgb(0 0 0 / 0.42);
+}
+
+@keyframes mobile-menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scaleY(0.98);
+    transform-origin: top;
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scaleY(1);
+    transform-origin: top;
+  }
+}
+
+.mobile-menu-panel {
+  animation: mobile-menu-in 180ms cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobile-menu-panel {
+    animation: none;
+  }
+}
+
+/* Custom scrollbars with warm gray track and academic blue thumb */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #ebe8e3;
+}
+::-webkit-scrollbar-thumb {
+  background: #a8c7d7;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #77a8c0;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #0b1f35;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #315a7c;
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #5b9bc7;
+}
